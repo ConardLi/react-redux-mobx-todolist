@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todolist组件</title>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/todolist.css" />
+</head>
+
+<body>
+
+    <!-- 组件化，一个页面多次使用且互不影响 -->
+
+    <div class="container" id="container">
+
+    </div>
+
+    <div class="container" id="container2">
+
+    </div>
+
+
+    <script src="js/todolist.js"></script>
+    <script>
+        var todo = new MyTodolist({
+            data: [{ code: 1, value: '吃饭', completed: true }, { code: 2, value: '睡觉', completed: true }, { code: 3, value: '打豆豆' }],
+            container: 'container',
+            showType: 'all',
+            getData: function (cList, uList) {
+                //回调函数
+                console.log('已完成：', cList);
+                console.log('未完成', uList);
+            }
+        });
+
+        setTimeout(() => {
+            var todo2 = new MyTodolist({
+            data: [{ code: 1, value: '窗前明月光'}, { code: 2, value: '疑是地上霜' }, { code: 3, value: '举头望明月' }, { code: 4, value: '低头思故乡' }],
+            container: 'container2',
+            showType: 'all',
+            getData: function (cList, uList) {
+
+            }
+        });
+        }, 10);
+
+
+    </script>
+</body>
+
+</html>
